@@ -5,11 +5,11 @@ on:
     branches: main
 
 permissions:
-  contents: wright
+  contents: write
   pages: write
-  id-token: wright
+  id-token: write
   actions: read
-  checks: wright
+  checks: write
   
 jobs:
   build:
