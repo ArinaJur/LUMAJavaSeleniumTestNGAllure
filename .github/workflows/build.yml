@@ -4,6 +4,13 @@ on:
   pull_request:
     branches: main
 
+permissions:
+  contents: wright
+  pages: write
+  id-token: wright
+  actions: read
+  checks: wright
+  
 jobs:
   build:
     name: Build On
