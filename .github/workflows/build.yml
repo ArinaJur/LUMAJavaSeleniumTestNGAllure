@@ -1,0 +1,56 @@
+name: Java CI with Maven
+
+on:
+  pull_request:
+    branches: main
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  actions: read
+  checks: write
+  
+jobs:
+  build:
+    name: Build On
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clone code from repo
+      uses: actions/checkout@v4
+      with: 
+        fetch-depth: 0
+    
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'corretto'
+        cache: maven
+
+    - name: Cache m2 dependencies
+      uses: actions/cache@v4
+      with:
+        path: .m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+        
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+  check-java-code-style:
+    name: Check Java code style
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clone code from repo
+      uses: actions/checkout@v4
+      with: 
+        fetch-depth: 0
+        
+    - name: Run java checkstyle
+      uses: nikitasavinov/checkstyle-action@0.6.0
