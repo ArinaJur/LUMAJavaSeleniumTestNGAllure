@@ -179,3 +179,4 @@ hs_err_pid*
 # Allure
 .allure/
 allure-results/
+allure-report/
