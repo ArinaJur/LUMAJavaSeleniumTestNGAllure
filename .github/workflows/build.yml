@@ -49,11 +49,11 @@ jobs:
     - name: Test with Maven
       run: mvn test
 
-    - name: Test Report for ${{ matrix.os }}
+    - name: Dorny Test Reporter
       uses: dorny/test-reporter@v1.9.1
       if: success() || failure()
       with:
-        name: Luma Project Test Report
+        name: Test Report for ${{ matrix.os }}
         path: target/surefire-reports/TEST-*.xml
         reporter: java-junit
 
