@@ -49,7 +49,7 @@ jobs:
     - name: Test with Maven
       run: mvn test
 
-    - name: Luma Project Test Reporter
+    - name: Test Report for ${{ matrix.os }}
       uses: dorny/test-reporter@v1.9.1
       if: success() || failure()
       with:
