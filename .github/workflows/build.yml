@@ -49,7 +49,15 @@ jobs:
     - name: Test with Maven
       run: mvn test
 
-    - name: Load test report history
+    - name: Luma Project Test Reporter
+      uses: dorny/test-reporter@v1.9.1
+      if: success() || failure()
+      with:
+        name: Luma Project Test Report
+        path: target/surefire-reports/TEST-*.xml
+        reporter: java-junit
+
+    - name: Load Allure test report history
       uses: actions/checkout@v4
       if: always()
       continue-on-error: true
@@ -57,7 +65,7 @@ jobs:
         ref: gh-pages
         path: gh-pages
 
-    - name: Build test report
+    - name: Build Allure test report
       uses: simple-elf/allure-report-action@v1.7
       if: ${{ matrix.os == 'ubuntu-latest' }}
       with:
@@ -65,7 +73,7 @@ jobs:
         allure_history: allure-history
         allure_results: target/allure-results
 
-    - name: Publish test report
+    - name: Publish Allure test report
       uses: peaceiris/actions-gh-pages@v3
       if: ${{ matrix.os == 'ubuntu-latest' }}
       with:
