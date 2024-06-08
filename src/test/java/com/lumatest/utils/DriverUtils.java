@@ -17,6 +17,7 @@ public class DriverUtils {
 
     static {
         chromeOptions = new ChromeOptions();
+
         chromeOptions.addArguments("--incognito");
         chromeOptions.addArguments("--headless");
         chromeOptions.addArguments("--window-size=1920,1080");

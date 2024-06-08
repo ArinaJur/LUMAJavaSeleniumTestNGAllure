@@ -4,10 +4,10 @@ import com.lumatest.utils.DriverUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
 
 public abstract class BaseTest {
     private WebDriver driver;
@@ -48,6 +48,18 @@ public abstract class BaseTest {
             this.driver = null;
         } else {
             Reporter.log("INFO: Driver is null.", true);
+    }
+
+    @BeforeMethod
+    protected void setupDriver() {
+        this.driver = DriverUtils.createChromeDriver(getDriver());
+    }
+
+    @AfterMethod(alwaysRun = true)
+    protected void tearDown() {
+        if (this.driver != null) {
+            getDriver().quit();
+            this.driver = null;
         }
     }
 
@@ -55,5 +67,4 @@ public abstract class BaseTest {
 
         return this.driver;
     }
-
 }
