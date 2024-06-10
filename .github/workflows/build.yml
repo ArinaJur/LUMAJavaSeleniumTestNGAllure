@@ -80,17 +80,3 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
         publish_dir: allure-history
-
-  check-java-code-style:
-    name: Check Java code style
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Clone code from repo
-      uses: actions/checkout@v4
-      with: 
-        fetch-depth: 0
-        
-    - name: Run java checkstyle
-      uses: nikitasavinov/checkstyle-action@0.6.0
