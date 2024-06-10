@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="CrossBrowser Test Suite">
+<suite name="CrossBrowser Test Suite" parallel="tests" thread-count="2" data-provider-thread-count="2">
     <test name = "ChromeTest" verbose="10">
         <parameter name="browser" value="chrome"/>
         <classes>
@@ -11,6 +11,13 @@
 
     <test name = "ChromiumTest" verbose="10">
         <parameter name="browser" value="chromium"/>
+        <classes>
+            <class name="com.lumatest.test.NavigationTest"/>
+        </classes>
+    </test>
+
+    <test name = "FirefoxTest" verbose="10">
+        <parameter name="browser" value="firefox"/>
         <classes>
             <class name="com.lumatest.test.NavigationTest"/>
         </classes>
