@@ -3,7 +3,6 @@ package com.lumatest.utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.chromium.ChromiumDriver;
 import org.openqa.selenium.chromium.ChromiumOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -41,13 +40,24 @@ public class DriverUtils {
         chromiumOptions = chromeOptions;
     }
 
-//for Luma
     private static WebDriver createChromeDriver(WebDriver driver) {
         if (driver != null) {
             driver.quit();
         }
-
         ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
+        chromeDriver.executeCdpCommand("Network.enable", Map.of());
+        chromeDriver.executeCdpCommand(
+                "Network.setExtraHTTPHeaders", Map.of("headers", Map.of("accept-language", "en-US,en;q=0.9"))
+        );
+
+        return chromeDriver ;
+    }
+
+    private static WebDriver createChromiumDriver(WebDriver driver) {
+        if (driver != null) {
+            driver.quit();
+        }
+        ChromeDriver chromeDriver = new ChromeDriver((ChromeOptions) chromiumOptions);
         chromeDriver.executeCdpCommand("Network.enable", Map.of());
         chromeDriver.executeCdpCommand(
                 "Network.setExtraHTTPHeaders", Map.of("headers", Map.of("accept-language", "en-US,en;q=0.9"))
@@ -60,7 +70,6 @@ public class DriverUtils {
         if (driver != null) {
             driver.quit();
         }
-
         FirefoxDriver firefoxDriver = new FirefoxDriver(firefoxOptions);
 //        firefoxDriver.executeCdpCommand("Network.enable", Map.of());
 //        firefoxDriver.executeCdpCommand(
@@ -72,17 +81,14 @@ public class DriverUtils {
 
     public static WebDriver createDriver(String browser, WebDriver driver) {
         switch(browser) {
-            case "chrome" -> {
-                return createChromeDriver(driver);
-            }
             case "firefox" -> {
                 return createFirefoxDriver(driver);
             }
             case "chromium" -> {
-                return createChromeDriver(driver);
+                return createChromiumDriver(driver);
             }
             default -> {
-                return null;
+                return createChromeDriver(driver);
             }
         }
     }

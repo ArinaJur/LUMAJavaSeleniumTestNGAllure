@@ -25,7 +25,7 @@ public abstract class BaseTest {
     @Parameters("browser")
     @BeforeMethod()
     protected void setupDriver(String browser) {
-        Reporter.log("______________________________________________________________________________", true);
+        Reporter.log("______________________________________________________________________", true);
 
         this.driver = DriverUtils.createDriver(browser, this.driver);
 
@@ -41,7 +41,7 @@ public abstract class BaseTest {
     @Parameters("browser")
     @AfterMethod(alwaysRun = true)
     protected void tearDown(String browser) {
-        if (this.driver != null) {
+        if (getDriver() != null) {
             getDriver().quit();
             Reporter.log("INFO: " + browser.toUpperCase() + " driver closed.", true);
 
@@ -51,9 +51,8 @@ public abstract class BaseTest {
         }
     }
 
-    public WebDriver getDriver() {
 
+    public WebDriver getDriver() {
         return this.driver;
     }
-
 }

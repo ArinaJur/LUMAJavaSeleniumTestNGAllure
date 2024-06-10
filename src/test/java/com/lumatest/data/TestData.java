@@ -26,5 +26,4 @@ public class TestData {
                 {BASE_URL, SALE_MENU, SALE_URL, SALE_TITLE}
         };
     }
-
 }

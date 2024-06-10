@@ -5,7 +5,7 @@
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="com.lumatest.test.NavigationTest"/>
-<!--            <class name="FrameworkTest"/>-->
+            <class name="FrameworkTest"/>
         </classes>
     </test>
 
@@ -13,7 +13,6 @@
         <parameter name="browser" value="chromium"/>
         <classes>
             <class name="com.lumatest.test.NavigationTest"/>
-<!--            <class name="FrameworkTest"/>-->
         </classes>
     </test>
 </suite>
