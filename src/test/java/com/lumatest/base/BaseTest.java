@@ -15,6 +15,7 @@ public abstract class BaseTest {
     protected void setupWebDriverManager() {
         WebDriverManager.chromedriver().setup();
         WebDriverManager.firefoxdriver().setup();
+
 //        WebDriverManager.edgedriver().setup();
 //        WebDriverManager.operadriver().setup();
 //        WebDriverManager.chromiumdriver().setup();
@@ -26,7 +27,6 @@ public abstract class BaseTest {
     protected void setupDriver(@Optional("chrome") String browser, ITestResult result) {
         Reporter.log("______________________________________________________________________", true);
         Reporter.log("RUN " + result.getMethod().getMethodName(), true);
-
 
         this.driver = DriverUtils.createDriver(browser, this.driver);
 
