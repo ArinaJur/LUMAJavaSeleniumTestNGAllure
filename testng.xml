@@ -15,11 +15,10 @@
             <class name="com.lumatest.test.NavigationTest"/>
         </classes>
     </test>
-
-    <test name = "FirefoxTest" verbose="10">
-        <parameter name="browser" value="firefox"/>
-        <classes>
-            <class name="com.lumatest.test.NavigationTest"/>
-        </classes>
-    </test>
+<!--    <test name = "FirefoxTest" verbose="10">-->
+<!--        <parameter name="browser" value="firefox"/>-->
+<!--        <classes>-->
+<!--            <class name="com.lumatest.test.NavigationTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
