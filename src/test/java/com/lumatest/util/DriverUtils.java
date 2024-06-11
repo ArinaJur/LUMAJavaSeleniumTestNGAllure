@@ -1,4 +1,4 @@
-package com.lumatest.utils;
+package com.lumatest.util;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

@@ -2,8 +2,8 @@ package com.lumatest.test;
 
 import com.lumatest.base.BaseTest;
 import com.lumatest.data.TestData;
-import com.lumatest.model.HomePage;
-import com.lumatest.model.ProductPage;
+import com.lumatest.pages.HomePage;
+import com.lumatest.pages.ProductPage;
 import io.qameta.allure.Allure;
 import org.testng.Assert;
 import org.testng.annotations.Test;

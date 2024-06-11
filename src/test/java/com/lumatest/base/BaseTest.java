@@ -1,7 +1,7 @@
 package com.lumatest.base;
 
-import com.lumatest.utils.DriverUtils;
-import com.lumatest.utils.ReportUtils;
+import com.lumatest.util.DriverUtils;
+import com.lumatest.util.ReportUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
