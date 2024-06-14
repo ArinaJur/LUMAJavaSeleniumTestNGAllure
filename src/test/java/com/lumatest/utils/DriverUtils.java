@@ -32,9 +32,6 @@ public class DriverUtils {
     firefoxOptions.addArguments("--disable-gpu");
     firefoxOptions.addArguments("--no-sandbox");
     firefoxOptions.addArguments("--disable-dev-shm-usage");
-    firefoxOptions.addArguments("--disable-web-security");
-    firefoxOptions.addArguments("--allow-running-insecure-content");
-    firefoxOptions.addArguments("--ignore-certificate-errors");
 
     chromiumOptions = chromeOptions;
   }
