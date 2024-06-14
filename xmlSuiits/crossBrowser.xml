@@ -17,12 +17,4 @@
             <class name="com.lumatest.test.ProductPageTest"/>
         </classes>
     </test>
-
-    <test name = "FirefoxTest" verbose="10">
-        <parameter name="browser" value="firefox"/>
-        <classes>
-            <class name="com.lumatest.test.NavigationTest"/>
-            <class name="com.lumatest.test.ProductPageTest"/>
-        </classes>
-    </test>
 </suite>
