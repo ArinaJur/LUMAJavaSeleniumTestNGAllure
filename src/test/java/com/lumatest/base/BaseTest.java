@@ -6,7 +6,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.Reporter;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.AfterMethod;
 
 public abstract class BaseTest {
   private WebDriver driver;
@@ -14,12 +18,11 @@ public abstract class BaseTest {
   @BeforeSuite
   protected void setupWebDriverManager() {
     WebDriverManager.chromedriver().setup();
-//        WebDriverManager.firefoxdriver().setup();
-
-//        WebDriverManager.edgedriver().setup();
-//        WebDriverManager.operadriver().setup();
-//        WebDriverManager.chromiumdriver().setup();
-//        WebDriverManager.iedriver().setup();
+//      WebDriverManager.firefoxdriver().setup();
+//      WebDriverManager.edgedriver().setup();
+//      WebDriverManager.operadriver().setup();
+//      WebDriverManager.chromiumdriver().setup();
+//      WebDriverManager.iedriver().setup();
   }
 
   @Parameters("browser")

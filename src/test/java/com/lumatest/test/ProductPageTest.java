@@ -10,15 +10,19 @@ import org.testng.annotations.Test;
 
 public class ProductPageTest extends BaseTest {
 
-  @Test
+  @Test(
+    testName = "PRODUCT | Product Details",
+    description = "TC-03 Open Base URL"
+  )
   public void testProduct() {
     Allure.step("Open Base URL.");
     getDriver().get(TestData.BASE_URL);
 
-    ProductPage productPage = new HomePage(getDriver())
-      .clickGearTopMenu()
-      .clickBagsSideMenu()
-      .clickProductImg(TestData.DRIVEN_BACKPACK_PRODUCT_NAME);
+    ProductPage productPage =
+      new HomePage(getDriver())
+        .clickGearTopMenu()
+        .clickBagsSideMenu()
+        .clickProductImg(TestData.DRIVEN_BACKPACK_PRODUCT_NAME);
 
     final String productName = productPage.getProductNameText();
     final String breadcrumbsMenuText = productPage.getBreadcrumbsMenuText();
