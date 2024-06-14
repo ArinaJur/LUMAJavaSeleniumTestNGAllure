@@ -71,10 +71,10 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <suiteXmlFiles>
-                        <suiteXmlFile>crossBrowser.xml</suiteXmlFile>
-                        <suiteXmlFile>smoke.xml</suiteXmlFile>
-                        <suiteXmlFile>regression.xml</suiteXmlFile>
-                        <suiteXmlFile>firefox.xml</suiteXmlFile>
+                        <suiteXmlFile>xmlSuiits/crossBrowser.xml</suiteXmlFile>
+                        <suiteXmlFile>xmlSuiits/smoke.xml</suiteXmlFile>
+                        <suiteXmlFile>xmlSuiits/regression.xml</suiteXmlFile>
+                        <suiteXmlFile>xmlSuiits/firefox.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
