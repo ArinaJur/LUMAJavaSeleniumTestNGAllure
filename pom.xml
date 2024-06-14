@@ -72,9 +72,6 @@
                     </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>xmlSuiits/crossBrowser.xml</suiteXmlFile>
-                        <suiteXmlFile>xmlSuiits/smoke.xml</suiteXmlFile>
-                        <suiteXmlFile>xmlSuiits/regression.xml</suiteXmlFile>
-                        <suiteXmlFile>xmlSuiits/firefox.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
