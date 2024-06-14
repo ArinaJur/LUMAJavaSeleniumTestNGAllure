@@ -7,17 +7,17 @@ import org.openqa.selenium.support.FindBy;
 
 abstract class SideMenu extends BreadcrumbsMenu {
 
-    @FindBy(linkText = "Bags")
-    private WebElement bagsSideMenu;
+  @FindBy(linkText = "Bags")
+  private WebElement bagsSideMenu;
 
-    protected SideMenu(WebDriver driver) {
-        super(driver);
-    }
+  protected SideMenu(WebDriver driver) {
+    super(driver);
+  }
 
-    @Step("Click Bags Side Menu.")
-    public BagsPage clickBagsSideMenu() {
-        bagsSideMenu.click();
+  @Step("Click Bags Side Menu.")
+  public BagsPage clickBagsSideMenu() {
+    bagsSideMenu.click();
 
-        return new BagsPage(getDriver());
-    }
+    return new BagsPage(getDriver());
+  }
 }

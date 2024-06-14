@@ -10,7 +10,7 @@ permissions:
   id-token: write
   actions: read
   checks: write
-  
+
 jobs:
   build:
     name: Build On
@@ -23,60 +23,60 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - name: Clone code from repo
-      uses: actions/checkout@v4
-      with: 
-        fetch-depth: 0
-    
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'corretto'
-        cache: maven
+      - name: Clone code from repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Cache m2 dependencies
-      uses: actions/cache@v4
-      with:
-        path: .m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
-        
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+          cache: maven
 
-    - name: Test with Maven
-      run: mvn test
+      - name: Cache m2 dependencies
+        uses: actions/cache@v4
+        with:
+          path: .m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
 
-    - name: Dorny Test Reporter
-      uses: dorny/test-reporter@v1.9.1
-      if: success() || failure()
-      with:
-        name: Test Report for ${{ matrix.os }}
-        path: target/surefire-reports/TEST-*.xml
-        reporter: java-junit
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
 
-    - name: Load Allure test report history
-      uses: actions/checkout@v4
-      if: always()
-      continue-on-error: true
-      with:
-        ref: gh-pages
-        path: gh-pages
+      - name: Test with Maven
+        run: mvn test
 
-    - name: Build Allure test report
-      uses: simple-elf/allure-report-action@v1.7
-      if: ${{ matrix.os == 'ubuntu-latest' }}
-      with:
-        gh_pages: gh-pages
-        allure_history: allure-history
-        allure_results: target/allure-results
+      - name: Dorny Test Reporter
+        uses: dorny/test-reporter@v1.9.1
+        if: success() || failure()
+        with:
+          name: Test Report for ${{ matrix.os }}
+          path: target/surefire-reports/TEST-*.xml
+          reporter: java-junit
 
-    - name: Publish Allure test report
-      uses: peaceiris/actions-gh-pages@v3
-      if: ${{ matrix.os == 'ubuntu-latest' }}
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
-        publish_dir: allure-history
+      - name: Load Allure test report history
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Build Allure test report
+        uses: simple-elf/allure-report-action@v1.7
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        with:
+          gh_pages: gh-pages
+          allure_history: allure-history
+          allure_results: target/allure-results
+
+      - name: Publish Allure test report
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history

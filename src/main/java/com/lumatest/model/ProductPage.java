@@ -6,16 +6,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ProductPage extends BreadcrumbsMenu {
-    @FindBy(xpath = "//span[@data-ui-id='page-title-wrapper']")
-    private WebElement productName;
+  @FindBy(xpath = "//span[@data-ui-id='page-title-wrapper']")
+  private WebElement productName;
 
-    protected ProductPage(WebDriver driver) {
-        super(driver);
-    }
+  protected ProductPage(WebDriver driver) {
+    super(driver);
+  }
 
-    @Step("Collect Actual Product Name Text.")
-    public String getProductNameText() {
+  @Step("Collect Actual Product Name Text.")
+  public String getProductNameText() {
 
-        return productName.getText();
-    }
+    return productName.getText();
+  }
 }
