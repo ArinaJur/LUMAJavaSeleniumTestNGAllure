@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"75695c338d6e54df2a66dd6dfad350df","name":"CrossBrowser Test Suite","statistic":{"failed":0,"broken":0,"skipped":0,"passed":6,"unknown":1,"total":7}},{"uid":"26c3355bfe48b4d973f7dd61ae44b0c7","name":"Smoke","statistic":{"failed":0,"broken":0,"skipped":0,"passed":3,"unknown":0,"total":3}}]}
