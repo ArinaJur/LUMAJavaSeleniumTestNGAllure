@@ -46,10 +46,6 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -DskipTests=true
 
-      - name: Setup firefox
-        id: setup-firefox
-        uses: browser-actions/setup-firefox@v1
-
       - name: Test with Maven
         run: mvn test
 
