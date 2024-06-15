@@ -50,7 +50,7 @@ jobs:
         run: mvn clean compile package -Dmaven.test.skip=true
 
       - name: Test Framework
-        run: mvn -Dtest=testPass test
+        run: mvn test -Dtest=FrameworkTest
 
       - name: Test with Maven
         run: mvn clean test
