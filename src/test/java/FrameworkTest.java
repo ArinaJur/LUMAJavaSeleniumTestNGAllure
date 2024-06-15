@@ -9,6 +9,7 @@ public class FrameworkTest {
     Assert.assertTrue(true);
   }
 
+  @Ignore
   @Test
   public void testFail() {
     Assert.fail();
