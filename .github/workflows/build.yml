@@ -58,13 +58,13 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: mvn clean test
 
+      - name: Test Firefox
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: mvn clean test -Dsurefire.suiteXmlFiles=xmlSuits/firefox.xml
+
       - name: Test with Maven
         if: ${{ matrix.os != 'ubuntu-latest' }}
         run: mvn -B package --file pom.xml
-
-      - name: Test Firefox
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: mvn clean -DtestSuite=FirefoxTest test
 
       - name: Dorny Test Reporter
         uses: dorny/test-reporter@v1.9.1

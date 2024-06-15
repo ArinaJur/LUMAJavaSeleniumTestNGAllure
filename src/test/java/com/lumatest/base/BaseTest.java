@@ -4,13 +4,10 @@ import com.lumatest.utils.DriverUtils;
 import com.lumatest.utils.ReportUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.*;
 
 public abstract class BaseTest {
   private WebDriver driver;
@@ -27,8 +24,10 @@ public abstract class BaseTest {
 
   @Parameters("browser")
   @BeforeMethod(alwaysRun = true)
-  protected void setupDriver(@Optional("chrome") String browser, ITestResult result) {
+  protected void setupDriver(@Optional("chrome") String browser, ITestContext context, ITestResult result) {
     Reporter.log("______________________________________________________________________", true);
+
+    Reporter.log("TEST SUIT: " + context.getCurrentXmlTest().getSuite().getName(), true);
     Reporter.log("RUN " + result.getMethod().getMethodName(), true);
 
     this.driver = DriverUtils.createDriver(browser, this.driver);

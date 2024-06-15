@@ -7,7 +7,7 @@
         </run>
     </groups>
 
-    <test name="Regression Test Run" >
+    <test name="Regression Test Run">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="com.lumatest.test.NavigationTest"/>

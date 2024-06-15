@@ -75,7 +75,6 @@
                     </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>xmlSuits/crossBrowser.xml</suiteXmlFile>
-                        <suiteXmlFile>xmlSuits/framework.xml</suiteXmlFile>
                         <suiteXmlFile>xmlSuits/regression.xml</suiteXmlFile>
                         <suiteXmlFile>xmlSuits/smoke.xml</suiteXmlFile>
                     </suiteXmlFiles>
