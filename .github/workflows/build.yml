@@ -48,7 +48,7 @@ jobs:
 
       - name: Build with Maven
         if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: mvn clean compile package -e -Dmaven.test.skip=true
+        run: mvn clean -e install -Dmaven.test.skip=true
 
       - name: Test Framework
         if: ${{ matrix.os == 'ubuntu-latest' }}
