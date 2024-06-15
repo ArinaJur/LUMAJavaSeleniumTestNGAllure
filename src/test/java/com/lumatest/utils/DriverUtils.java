@@ -6,7 +6,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chromium.ChromiumOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class DriverUtils {
@@ -17,7 +19,7 @@ public class DriverUtils {
     static {
         chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--incognito");
-        chromeOptions.addArguments("--headless");
+        //chromeOptions.addArguments("--headless");
         chromeOptions.addArguments("--window-size=1920,1080");
         chromeOptions.addArguments("--disable-gpu");
         chromeOptions.addArguments("--no-sandbox");
@@ -26,6 +28,13 @@ public class DriverUtils {
         chromeOptions.addArguments("--allow-running-insecure-content");
         chromeOptions.addArguments("--ignore-certificate-errors");
 
+        Map<String, Object> prefs = new HashMap<String, Object>();
+        prefs.put("download.default_directory", "./src/test/resources");
+        prefs.put("download.prompt_for_download", false);
+        prefs.put("download.directory_upgrade", true);
+        prefs.put( "safebrowsing.enabled", true);
+        chromeOptions.setExperimentalOption("prefs", prefs);
+
         firefoxOptions = new FirefoxOptions();
         firefoxOptions.addArguments("--incognito");
         firefoxOptions.addArguments("--headless");
@@ -33,9 +42,6 @@ public class DriverUtils {
         firefoxOptions.addArguments("--disable-gpu");
         firefoxOptions.addArguments("--no-sandbox");
         firefoxOptions.addArguments("--disable-dev-shm-usage");
-        firefoxOptions.addArguments("--disable-web-security");
-        firefoxOptions.addArguments("--allow-running-insecure-content");
-        firefoxOptions.addArguments("--ignore-certificate-errors");
 
         chromiumOptions = chromeOptions;
     }
