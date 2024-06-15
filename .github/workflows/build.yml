@@ -54,13 +54,21 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: mvn clean test -Dtest=FrameworkTest
 
-      - name: Test with Maven
+      - name: Cross Browser Testing
         if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: mvn test
+        run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/crossBrowser.xml
 
-      - name: Test Firefox
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/firefox.xml
+#      - name: Test Chrome
+#        if: ${{ matrix.os == 'ubuntu-latest' }}
+#        run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/chrome.xml
+#
+#      - name: Test Chromium
+#        if: ${{ matrix.os == 'ubuntu-latest' }}
+#        run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/chromium.xml
+#
+#      - name: Test Firefox
+#        if: ${{ matrix.os == 'ubuntu-latest' }}
+#        run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/firefox.xml
 
       - name: Build and Test with Maven
         if: ${{ matrix.os != 'ubuntu-latest' }}

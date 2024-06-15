@@ -74,9 +74,9 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <suiteXmlFiles>
+                        <suiteXmlFile>xmlSuits/smoke.xml</suiteXmlFile>
                         <suiteXmlFile>xmlSuits/crossBrowser.xml</suiteXmlFile>
                         <suiteXmlFile>xmlSuits/regression.xml</suiteXmlFile>
-                        <suiteXmlFile>xmlSuits/smoke.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>

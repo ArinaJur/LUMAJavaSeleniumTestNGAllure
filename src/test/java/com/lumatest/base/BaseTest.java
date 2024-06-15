@@ -11,6 +11,7 @@ import org.testng.annotations.*;
 
 public abstract class BaseTest {
   private WebDriver driver;
+  private final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
 
   @BeforeSuite
   protected void setupWebDriverManager() {
@@ -27,10 +28,12 @@ public abstract class BaseTest {
   protected void setupDriver(@Optional("chrome") String browser, ITestContext context, ITestResult result) {
     Reporter.log("______________________________________________________________________", true);
 
+    this.driver = DriverUtils.createDriver(browser, this.driver);
+    this.threadLocalDriver.set(driver);
+
+    Reporter.log("Test Thread ID: " + Thread.currentThread().getId(), true);
     Reporter.log("TEST SUIT: " + context.getCurrentXmlTest().getSuite().getName(), true);
     Reporter.log("RUN " + result.getMethod().getMethodName(), true);
-
-    this.driver = DriverUtils.createDriver(browser, this.driver);
 
     if (getDriver() == null) {
       Reporter.log("ERROR: Unknown parameter 'browser' - '" + browser + "'.", true);
@@ -51,13 +54,17 @@ public abstract class BaseTest {
       getDriver().quit();
       Reporter.log("INFO: " + browser.toUpperCase() + " driver closed.", true);
 
-      this.driver = null;
+      Reporter.log("After Test Thread ID: " + Thread.currentThread().getId(), true);
+      threadLocalDriver.remove();
+
+      driver = null;
+
     } else {
       Reporter.log("INFO: Driver is null.", true);
     }
   }
 
   protected WebDriver getDriver() {
-    return this.driver;
+    return threadLocalDriver.get();
   }
 }
