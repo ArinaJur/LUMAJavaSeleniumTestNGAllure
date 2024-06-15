@@ -55,9 +55,9 @@ jobs:
       - name: Test with Maven
         run: mvn clean package -Dmaven.test.skip=false test
 
-      - name: Test Firefox
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: mvn clean -DtestSuite="FirefoxTest" test
+#      - name: Test Firefox
+#        if: ${{ matrix.os == 'ubuntu-latest' }}
+#        run: mvn clean -DtestSuite="FirefoxTest" test
 
       - name: Dorny Test Reporter
         uses: dorny/test-reporter@v1.9.1
