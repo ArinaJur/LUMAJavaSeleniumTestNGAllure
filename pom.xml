@@ -75,7 +75,8 @@
                     </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>xmlSuits/smoke.xml</suiteXmlFile>
-                        <suiteXmlFile>xmlSuits/crossBrowser.xml</suiteXmlFile>
+                        <suiteXmlFile>xmlSuits/chrome.xml</suiteXmlFile>
+                        <suiteXmlFile>xmlSuits/chromium.xml</suiteXmlFile>
                         <suiteXmlFile>xmlSuits/regression.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
