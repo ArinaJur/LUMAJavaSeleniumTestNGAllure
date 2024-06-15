@@ -52,15 +52,12 @@ jobs:
       - name: Test Framework
         run: mvn clean test -DtestSuite="Framework"
 
-      - name: Test All
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: mvn clean test -DtestSuite="CrossBrowser" mvn clean test
-          -DtestSuite="Firefox" mvn clean test -DtestSuite="Regression" mvn
-          clean test -DtestSuite="Smoke"
+      - name: Test with Maven
+        run: mvn clean test
 
-      - name: Test Cross Browser
-        if: ${{ matrix.os != 'ubuntu-latest' }}
-        run: mvn clean test -DtestSuite="CrossBrowser"
+      - name: Test Firefox
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: mvn clean test -DtestSuite="FirefoxTest"
 
       - name: Dorny Test Reporter
         uses: dorny/test-reporter@v1.9.1
