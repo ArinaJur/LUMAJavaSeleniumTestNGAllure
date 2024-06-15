@@ -50,10 +50,10 @@ jobs:
         run: mvn clean compile package -Dmaven.test.skip=true
 
       - name: Test Framework
-        run: mvn test -Dtest=FrameworkTest
+        run: mvn clean test -Dtest=FrameworkTest
 
       - name: Test with Maven
-        run: mvn clean test
+        run: mvn clean package -Dmaven.test.skip=false test
 
       - name: Test Firefox
         if: ${{ matrix.os == 'ubuntu-latest' }}
