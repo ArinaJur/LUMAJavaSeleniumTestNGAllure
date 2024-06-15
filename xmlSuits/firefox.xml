@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Firefox">
+    <test name = "FirefoxTest" verbose="10">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="com.lumatest.test.NavigationTest"/>
+            <class name="com.lumatest.test.ProductPageTest"/>
+        </classes>
+    </test>
+</suite>
