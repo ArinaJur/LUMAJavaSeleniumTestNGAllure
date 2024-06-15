@@ -59,8 +59,8 @@ jobs:
         run: mvn clean test
 
       - name: Test with Maven
-          if: ${{ matrix.os != 'ubuntu-latest' }}
-          run: mvn -B package --file pom.xml
+        if: ${{ matrix.os != 'ubuntu-latest' }}
+        run: mvn -B package --file pom.xml
 
       - name: Test Firefox
         if: ${{ matrix.os == 'ubuntu-latest' }}
