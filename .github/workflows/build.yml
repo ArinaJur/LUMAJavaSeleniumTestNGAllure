@@ -56,13 +56,13 @@ jobs:
 
       - name: Test with Maven
         if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: mvn clean test
+        run: mvn test
 
       - name: Test Firefox
         if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: mvn clean test -Dsurefire.suiteXmlFiles=xmlSuits/firefox.xml
+        run: mvn test -Dsurefire.suiteXmlFiles=xmlSuits/firefox.xml
 
-      - name: Test with Maven
+      - name: Build and Test with Maven
         if: ${{ matrix.os != 'ubuntu-latest' }}
         run: mvn -B package --file pom.xml
 
