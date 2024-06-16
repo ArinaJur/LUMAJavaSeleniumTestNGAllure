@@ -1,4 +1,4 @@
-package com.lumatest.model;
+package com.lumatest.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;

@@ -1,4 +1,4 @@
-package com.lumatest.model;
+package com.lumatest.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
